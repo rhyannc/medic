@@ -4,7 +4,6 @@ import React, { createContext, useState, useContext, ReactNode } from 'react';
 
 interface sheduling{
     cd_empresa:        string;
-    token:             string;
     cd_paciente:       string;
     cd_plano:          string;
     cd_modalidade:     string;
@@ -33,14 +32,24 @@ const shedulContext = createContext<shedulContextData>({} as shedulContextData)
 function shedulProvider({ children } : shedulProviderProps){
   const [data, setData] = useState<sheduling>({} as sheduling);
 
+  function temp( {cd_empresa,  cd_paciente, cd_plano} : sheduling){
+
+    const {cd_empresa} = cd_empresa;
+    const {cd_paciente} = cd_paciente;
+    const {cd_plano} = cd_plano;
+
+  }
+
   return(
-    <shedulContext.Provider value={{sheduling}}>
-        {children}
+    <shedulContext.Provider
+    value={{temp}}
+    >
+      {children}
     </shedulContext.Provider>
-    )
- 
+  )
 
 }
+
 
 function useShedul(): shedulContextData {
     const context = useContext(shedulContext);
