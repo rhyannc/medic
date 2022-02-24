@@ -1,6 +1,9 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
-
-
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode
+}from 'react';
 
 interface sheduling{
     cd_empresa:        string;
@@ -19,8 +22,13 @@ interface sheduling{
     nr_quantidade:     string;
 }
 
+interface shedulingState{
+   dados: sheduling;
+}
+
 interface shedulContextData{
   sheduling: sheduling;
+  temp: (Credential: sheduling) => Promise<void>;
 }
 
 interface shedulProviderProps{
@@ -30,19 +38,20 @@ interface shedulProviderProps{
 const shedulContext = createContext<shedulContextData>({} as shedulContextData)
 
 function shedulProvider({ children } : shedulProviderProps){
-  const [data, setData] = useState<sheduling>({} as sheduling);
+  const [data, setData] = useState<shedulingState>({} as shedulingState);
 
-  function temp( {cd_empresa,  cd_paciente, cd_plano} : sheduling){
+  async function temp( {cd_empresa,  cd_paciente, cd_plano} : sheduling){
 
-    const {cd_empresa} = cd_empresa;
+    const {cd_empresa} = 'cd_empresa';
     const {cd_paciente} = cd_paciente;
     const {cd_plano} = cd_plano;
 
+    setData({ cd_empresa, cd_paciente, cd_plano});
   }
 
   return(
     <shedulContext.Provider
-    value={{temp}}
+    value={{sheduling : data.dados, temp}}
     >
       {children}
     </shedulContext.Provider>
