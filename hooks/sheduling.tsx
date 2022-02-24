@@ -40,18 +40,9 @@ const ShedulContext = createContext<shedulContextData>({} as shedulContextData)
 function ShedulProvider({ children } : shedulProviderProps){
   const [data, setData] = useState<shedulingState>({} as shedulingState);
 
-  async function temp( {cd_empresa,  cd_paciente, cd_plano} : sheduling){
-
-    const {cd_empresa} = cd_empresa;
-    const {cd_paciente} = cd_paciente;
-    const {cd_plano} = cd_plano;
-
-    setData({ cd_empresa, cd_paciente, cd_plano});
-  }
-
   return(
     <ShedulContext.Provider
-    value={{sheduling : data.dados, temp}}
+    value={{sheduling : data.dados, temp: setData}}
     >
       {children}
     </ShedulContext.Provider>
