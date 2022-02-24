@@ -42,7 +42,7 @@ function ShedulProvider({ children } : shedulProviderProps){
 
   async function temp( {cd_empresa,  cd_paciente, cd_plano} : sheduling){
 
-    const {cd_empresa} = 'cd_empresa';
+    const {cd_empresa} = cd_empresa;
     const {cd_paciente} = cd_paciente;
     const {cd_plano} = cd_plano;
 
