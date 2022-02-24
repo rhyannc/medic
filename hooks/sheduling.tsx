@@ -35,9 +35,9 @@ interface shedulProviderProps{
   children: ReactNode;
 }
 
-const shedulContext = createContext<shedulContextData>({} as shedulContextData)
+const ShedulContext = createContext<shedulContextData>({} as shedulContextData)
 
-function shedulProvider({ children } : shedulProviderProps){
+function ShedulProvider({ children } : shedulProviderProps){
   const [data, setData] = useState<shedulingState>({} as shedulingState);
 
   async function temp( {cd_empresa,  cd_paciente, cd_plano} : sheduling){
@@ -50,22 +50,22 @@ function shedulProvider({ children } : shedulProviderProps){
   }
 
   return(
-    <shedulContext.Provider
+    <ShedulContext.Provider
     value={{sheduling : data.dados, temp}}
     >
       {children}
-    </shedulContext.Provider>
+    </ShedulContext.Provider>
   )
 
 }
 
 
 function useShedul(): shedulContextData {
-    const context = useContext(shedulContext);
+    const context = useContext(ShedulContext);
     return context;
 }
 
 
-export {shedulProvider, useShedul}
+export {ShedulProvider, useShedul}
 
 
