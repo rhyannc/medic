@@ -5,13 +5,12 @@ import React, {
   ReactNode
 }from 'react';
 
-interface sheduling{
+interface Sheduling{
     cd_empresa:        string;
     cd_paciente:       string;
     cd_plano:          string;
     cd_modalidade:     string;
     cd_procedimento:   string;
-    ds_procedimento:   string;
     cd_medico:         string;
     cd_subplano:       string;
     nr_tempo:          string;
@@ -22,36 +21,32 @@ interface sheduling{
     nr_quantidade:     string;
 }
 
-interface shedulingState{
-   dados: sheduling;
-}
+interface ShedulContextData{
+  sheduling: Sheduling;
 
-interface shedulContextData{
-  sheduling: sheduling;
-  temp: (Credential: sheduling) => Promise<void>;
-}
+  temp: (Credential: Sheduling) => Promise<void>;
+};
 
-interface shedulProviderProps{
+interface ShedulProviderProps{
   children: ReactNode;
-}
+};
 
-const ShedulContext = createContext<shedulContextData>({} as shedulContextData)
+ const ShedulContext = createContext<ShedulContextData>({} as ShedulContextData);
 
-function ShedulProvider({ children } : shedulProviderProps){
-  const [data, setData] = useState<shedulingState>({} as shedulingState);
+ function ShedulProvider({ children } : ShedulProviderProps){
+     const [data, setData] = useState<Sheduling>({} as Sheduling);
 
-  return(
-    <ShedulContext.Provider
-    value={{sheduling : data.dados, temp: setData}}
-    >
-      {children}
-    </ShedulContext.Provider>
-  )
+     return(
+      <ShedulContext.Provider
+      value={{sheduling : data, temp: setData}}
+      >
+        {children}
+      </ShedulContext.Provider>
+    )  
+  }
 
-}
 
-
-function useShedul(): shedulContextData {
+  function useShedul(): ShedulContextData {
     const context = useContext(ShedulContext);
     return context;
 }
