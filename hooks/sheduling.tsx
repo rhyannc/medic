@@ -16,7 +16,7 @@ interface Sheduling{
 interface ShedulContextData{
   sheduling: Sheduling;
 
-  temp: (Credential: Sheduling) => Promise<void>;
+  temp: React.Dispatch<React.SetStateAction<Sheduling>>
 };
 
 interface ShedulProviderProps{
@@ -45,5 +45,3 @@ function useShedul(): ShedulContextData {
 }
 
 export {ShedulProvider, useShedul}
-
-
