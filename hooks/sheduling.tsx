@@ -6,11 +6,11 @@ import React, {
 }from 'react';
 
 interface Sheduling{
-    cd_empresa:        string;
-    cd_paciente:       string;
-    cd_plano:          string;
-    cd_modalidade:     string;
-    cd_procedimento:   string;
+    cd_empresa?:        string;
+    cd_paciente?:       string;
+    cd_plano?:          string;
+    cd_modalidade?:     string;
+    cd_procedimento?:   string;
 }
 
 interface ShedulContextData{
