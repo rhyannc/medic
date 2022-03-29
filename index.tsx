@@ -97,40 +97,7 @@ export function Teste() {
         // A lista de itens que devem ser exibidos na agenda. Se você deseja renderizar o item como data vazia 
         // o valor da chave de data deve ser um array vazio []. Se não existir valor para a chave de data é 
         // considerado que a data em questão ainda não está carregada 
-        items={times}  /*{{  
-
-/*items={{
-    '2022-03-30' : [
-        {
-         "day": "2022-03-30",
-         "height": 25,
-         "name": "De 08:30 as 09:00",
-        },
-       
-          {
-            "day": "fd",
-            "height": 25,
-            "name": "MAnoldo 2",
-           },
-           {
-            "day": "2sdff",
-            "height": 25,
-            "name": "MAnoldo 2",
-           },
-         ],  
-
-      '2022-03-29' : [
-        {
-          "day": "2022-03-29",
-          "height": 25,
-          "name": "De 07:10 as 07:15",
-         }
-       ],
-
-       
-
-
-  }}*/
+        items={times} 
 
         // DATA INICIAL
         selected={String(today())} 
